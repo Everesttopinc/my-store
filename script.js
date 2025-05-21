@@ -54,17 +54,52 @@ let cart = [];
 
 function loadProducts() {
   const container = document.getElementById("product-list");
-  products.forEach((p) => {
-    const el = document.createElement("div");
-    el.className = "product";
-    el.innerHTML = `
-      <h3>${p.name}</h3>
-      <p>$${p.price.toFixed(2)}</p>
-      <button onclick="addToCart(${p.id})">Add to Cart</button>
-    `;
-    container.appendChild(el);
+  container.innerHTML = "";
+
+  const categories = {};
+
+  // Group products by category and subcategory
+  products.forEach(p => {
+    if (!categories[p.category]) {
+      categories[p.category] = {};
+    }
+    if (!categories[p.category][p.subcategory]) {
+      categories[p.category][p.subcategory] = [];
+    }
+    categories[p.category][p.subcategory].push(p);
   });
+
+  // Build HTML sections
+  for (const category in categories) {
+    const catHeader = document.createElement("h2");
+    catHeader.textContent = category;
+    container.appendChild(catHeader);
+
+    for (const sub in categories[category]) {
+      const subHeader = document.createElement("h3");
+      subHeader.textContent = sub;
+      container.appendChild(subHeader);
+
+      const productGrid = document.createElement("div");
+      productGrid.className = "products";
+
+      categories[category][sub].forEach(p => {
+        const el = document.createElement("div");
+        el.className = "product";
+        el.innerHTML = `
+          <img src="${p.image}" alt="${p.name}" style="width:100%; border-radius:8px;" />
+          <h4>${p.name}</h4>
+          <p>$${p.price.toFixed(2)}</p>
+          <button onclick="addToCart(${p.id})">Add to Cart</button>
+        `;
+        productGrid.appendChild(el);
+      });
+
+      container.appendChild(productGrid);
+    }
+  }
 }
+
 
 function addToCart(productId) {
   const product = products.find(p => p.id === productId);
