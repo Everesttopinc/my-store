@@ -1,7 +1,53 @@
 const products = [
-  { id: 1, name: "Product A", price: 10.0 },
-  { id: 2, name: "Product B", price: 15.0 },
-  { id: 3, name: "Product C", price: 20.0 },
+  const products = [
+  {
+    id: 1,
+    name: "Scorch 61754-105",
+    price: 89.99,
+    image: "https://via.placeholder.com/150?text=Scorch",
+    category: "Lighters",
+    subcategory: "Scorch"
+  },
+  {
+    id: 2,
+    name: "Boom 1027",
+    price: 24.99,
+    image: "https://via.placeholder.com/150?text=Boom",
+    category: "Lighters",
+    subcategory: "Boom"
+  },
+  {
+    id: 3,
+    name: "Headphones",
+    price: 49.99,
+    image: "https://via.placeholder.com/150?text=Headphones",
+    category: "Electronics",
+    subcategory: "Audio"
+  },
+  {
+    id: 4,
+    name: "Phone Case",
+    price: 9.99,
+    image: "https://via.placeholder.com/150?text=Phone+Case",
+    category: "Electronics",
+    subcategory: "Accessories"
+  },
+  {
+    id: 5,
+    name: "Notebook",
+    price: 3.99,
+    image: "https://via.placeholder.com/150?text=Notebook",
+    category: "Stationery",
+    subcategory: "Notebooks"
+  },
+  {
+    id: 6,
+    name: "Pen Set",
+    price: 2.49,
+    image: "https://via.placeholder.com/150?text=Pen+Set",
+    category: "Stationery",
+    subcategory: "Pens"
+  }
 ];
 
 let cart = [];
